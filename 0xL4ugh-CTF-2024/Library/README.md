@@ -1,12 +1,12 @@
 # Library [Hard]
 ## Description
-Built a book library, however my friend says that i made a really nasty mistake!
+Built a book library, however my friend says that I made a nasty mistake!
 
 > Author: zAbuQasem
 
 
 ## Solution
-This challenge features a [format string vulnerability](https://python-forum.io/thread-11421.html) in python that could be used to add a book with the flag in the title, then using the search functionality to leak the flag using regex injection.
+This challenge features a [format string vulnerability](https://python-forum.io/thread-11421.html) in Python that could be used to add a book with the flag in the title, then using the search functionality to leak the flag using regex injection.
 
 - Vulnerable Snippet
 ```py
