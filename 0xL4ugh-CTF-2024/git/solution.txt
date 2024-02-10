@@ -1,0 +1,7 @@
+-C /tmp init
+-C /tmp add .
+-C /tmp commit -m test
+-C /tmp ls-tree -r -l master
+-C /tmp show cadd234e166870f23bcdcd4cb494341f.txt
+
+

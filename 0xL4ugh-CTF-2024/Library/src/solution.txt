@@ -1,0 +1,3 @@
+https://python-forum.io/thread-11421.html
+
+{file.__init__.__globals__[FLAG]}

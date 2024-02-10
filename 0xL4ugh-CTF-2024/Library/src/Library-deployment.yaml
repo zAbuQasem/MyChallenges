@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  library
+  namespace: default
+  labels:
+    app:  library
+spec:
+  selector:
+    matchLabels:
+      app: library
+  replicas: 6
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  library
+    spec:
+      containers:
+      - name:  library
+        image:  zeyadabuqasem/0xl4ugh:library@sha256:f1849a6ef3d9f4a226525e3efd27c8fd45381c11235c0a3035625bcb0cf4bc69
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  50001
+          name:  library
+          protocol: TCP
+      imagePullSecrets:
+        - name: dockerconf
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: library-svc
+  namespace: default
+spec:
+  selector:
+    app: library
+  type: ClusterIP
+  ports:
+  - name: library-svc
+    protocol: TCP
+    port: 50003
+    targetPort: 50003
+---
+

@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-revenge
+  namespace: default
+  labels:
+    app:  git-revenge
+spec:
+  selector:
+    matchLabels:
+      app: git-revenge
+  replicas: 6
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  git-revenge
+    spec:
+      containers:
+      - name:  git-revenge
+        image:  zeyadabuqasem/0xl4ugh:git-revenge
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  50004
+          name:  git-revenge
+          protocol: TCP
+      imagePullSecrets:
+        - name: dockerconf
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: git-revenge-svc
+  namespace: default
+spec:
+  selector:
+    app: git-revenge
+  type: ClusterIP
+  ports:
+  - name: git-revenge-svc
+    protocol: TCP
+    port: 50004
+    targetPort: 50004
+---
+

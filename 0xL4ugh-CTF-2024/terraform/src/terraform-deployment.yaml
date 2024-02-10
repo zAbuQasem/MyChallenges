@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  terraform
+  namespace: default
+  labels:
+    app:  terraform
+spec:
+  selector:
+    matchLabels:
+      app: terraform
+  replicas: 6
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  terraform
+    spec:
+      containers:
+      - name:  terraform
+        image:  zeyadabuqasem/0xl4ugh:terraform
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  50002
+          name:  terraform
+          protocol: TCP
+      imagePullSecrets:
+        - name: dockerconf
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: terraform-svc
+  namespace: default
+spec:
+  selector:
+    app: terraform
+  type: ClusterIP
+  ports:
+  - name: terraform-svc
+    protocol: TCP
+    port: 50002
+    targetPort: 50002
+---
+
