@@ -1,6 +1,6 @@
 # TerraMeow [Easy]
 ## Description
-Easy challenge to get you learn basics of IAC with Terraform.
+An easy challenge to get you to learn the basics of IAC with Terraform.
 
 > Author: zAbuQasem
 
