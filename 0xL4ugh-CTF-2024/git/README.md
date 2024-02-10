@@ -6,7 +6,7 @@ Just another annoying git challenge :)
 
 
 ## Solution
-The main idea of this challenge is to get the contestants learn new git commands the hard way. The following payloads was the intended solution for the challenge:
+The main idea of this challenge is to get the contestants to learn new git commands the hard way. The following payloads were the intended solution for the challenge:
 ```sh
 -C /tmp init
 -C /tmp add .
@@ -16,7 +16,7 @@ The main idea of this challenge is to get the contestants learn new git commands
 # This file should contain the flag
 -C /tmp show cadd234e166870f23bcdcd4cb494341f.txt
 ```
-## Cool unintendeds
+## Cool unintended
 @cygnusx
 ```
 update-ref -d refs/notes/commits
